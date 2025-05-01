@@ -50,18 +50,20 @@ On the machine the word doc phones home to (for our project the kali vm) The mac
 #### python3 -m http.server --bind 0.0.0.0 80
 
 # Word Macros
-
 * Use AutoOpen() for the macro name to run on open
 * Window defender stops the reverse shell from saving the exe file and running it
+* Macros also need to be enabled by the user for it to work
 
 ## ReverseDownload()
+This is the only Macro set to autoOpen the others are commented out 
 * uses MSXML2.XMLHTTP to GET the file named "reverseWin.exe"
 * writes the file to the directory of the word doc
-*then it calls a minimizedShell which runs the exe
+* then it calls a minimizedShell which runs the exe
 
 ## ReverseShell()
   * Holds a String in the macro which is a powershell command that creates a reverse shell 
   * windows defender doesnt let the macro run
+    
 ## ObfuscatedReverse()
   * Holds the same string but makes use of the -e flag in powershell command
   * -e interprets the String as a base64 encoded command
