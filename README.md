@@ -49,3 +49,25 @@ On the machine the word doc phones home to (for our project the kali vm) The mac
 ### In the same directory as the msfvenom payload
 #### python3 -m http.server --bind 0.0.0.0 80
 
+# Word Macros
+
+* Use AutoOpen() for the macro name to run on open
+* Window defender stops the reverse shell from saving the exe file and running it
+
+## ReverseDownload()
+* uses MSXML2.XMLHTTP to GET the file named "reverseWin.exe"
+* writes the file to the directory of the word doc
+*then it calls a minimizedShell which runs the exe
+
+## ReverseShell()
+  * Holds a String in the macro which is a powershell command that creates a reverse shell 
+  * windows defender doesnt let the macro run
+## ObfuscatedReverse()
+  * Holds the same string but makes use of the -e flag in powershell command
+  * -e interprets the String as a base64 encoded command
+  * Online this seemed like it used to be a workaround for defender but defender catches this aswell.
+  * Generating the String requires 
+    * first converting it to base 64 using an online converter
+    * paste the command in the TestEncoder.py and run
+    * The command needs to be split up because VBA limits the line size and its also easier to read
+    * When running the python script it also triggers windows defender even if its just printing out the encoded String.
